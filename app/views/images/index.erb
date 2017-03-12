@@ -1,0 +1,17 @@
+<% if @session.key?(:id) then %>
+<h2>Welcome <%= User.find(@session[:id]).username %>!</h2> 
+<h3><a href="/new_image">Post new image</a> <a href="/logout">Logout</a></h3>
+<% else %>
+<h2>Please <a href="/signup">signup</a> or <a href="/login">login</a> to
+post.</h2>
+<% end %>
+
+<ul>
+<% Image.all.each do |i| %>
+  <li><p><%= i.src %></p>
+  <p><a href="/draw/<%= i.id %>">Draw Image</a></p>
+  <p><a href="/user/<%= i.user.id %>"><%= i.user.username %></a></p>
+  </li>
+  
+<% end %>
+</ul>

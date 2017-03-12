@@ -1,0 +1,10 @@
+<ul>
+<% Image.all.each do |i| %>
+  <li><p><%= i.src %></p>
+  <p><a href="/draw/<%= i.id %>">Draw Image</a></p>
+  <p><a href="/user/<%= i.user.id %>"><%= i.user.name %></a></p>
+  </li>
+  
+<% end %>
+</ul>
+<p><a href="/login">Login</a></p>

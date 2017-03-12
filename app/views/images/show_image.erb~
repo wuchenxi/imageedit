@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<header>
+</header>
+<body>
+
+<canvas id="myimage" width="600" height="600" style="border:1px solid black;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script>
+var ctx=document.getElementById("myimage").getContext("2d");
+var imgdata=ctx.getImageData(0,0,600,600);
+function plot(x,y){
+  imgdata[(x*600+y)*4]=0;
+  imgdata[(x*600+y)*4+1]=0;
+  imgdata[(x*600+y)*4+2]=0;
+  imgdata[(x*600+y)*4+3]=255;
+}
+
+for(i=0;i<25;i++){
+plot(i*10,i*i);
+}
+
+
+ctx.putImageData(imgdata,0,0);
+</script>
+
+
+</body>
+</html>
