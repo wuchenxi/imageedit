@@ -32,6 +32,7 @@ class ImagesController < ApplicationController
   end
 
   get '/users/:id' do
+    @session=session
     @user=User.find(params[:id].to_i)
     @own=false
     if logged_in? && @user==current_user then @own=true end
