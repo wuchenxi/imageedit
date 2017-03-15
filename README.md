@@ -2,6 +2,11 @@ An App for posting images drawn with javascript
 
 # Installation
 
+bundle install --path vendor/bundle
+
+Start: 
+bundle exec rackup
+
 # Usage
 
 A sample image:

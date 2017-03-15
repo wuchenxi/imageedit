@@ -1,4 +1,5 @@
 <h2>Images of <%=@user.username %></h2>
+<ul>
 <% @user.images.each do |i| %>
   <li><p><%= i.name %></p>
   <p><%= i.src %></p>
@@ -9,5 +10,5 @@
   <% end %>
   </li>
 <% end %>
-
+</ul>
 <p><a href="/images">Show all images</a></p>

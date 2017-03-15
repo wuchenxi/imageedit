@@ -1,7 +1,13 @@
+require 'rack-flash'
+
 class UsersController < ApplicationController
-  
+
+  use Rack::Flash
   get '/signup' do
-    if logged_in? then redirect "/images" end
+    if logged_in? then
+      flash[:message] = "Already logged in."
+      redirect "/images"
+    end
     erb :"/users/create_user"
   end
   
@@ -13,13 +19,19 @@ class UsersController < ApplicationController
   
   post '/signup' do
     @user=User.create(params)
-    if !@user.valid? then redirect "/signup" end
+    if !@user.valid? then
+      flash[:message] = "Invalid input."
+      redirect "/signup"
+    end
     session[:id] = @user.id
     redirect "/images"
   end
 
   get '/login' do
-    if session[:id] then redirect "/images" end
+    if session[:id] then
+      flash[:message] = "Already logged in."
+      redirect "/images"
+    end
     erb :"/users/login"
   end
 
@@ -29,6 +41,7 @@ class UsersController < ApplicationController
       session[:id]=user.id
       redirect "/images"
     else
+      flash[:message] = "Incorrect username/password."
       redirect "/login"
     end
   end

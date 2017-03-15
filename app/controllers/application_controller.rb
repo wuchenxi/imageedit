@@ -9,6 +9,7 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "password_security"
   end
 
+  
    helpers do
     def logged_in?
       !!current_user

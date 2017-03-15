@@ -1,3 +1,7 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
 <% if @session.key?(:id) then %>
 <h2>Welcome <%= User.find(@session[:id]).username %>!</h2> 
 <h3><a href="/images/new">Post new image</a> <a href="/logout">Logout</a></h3>

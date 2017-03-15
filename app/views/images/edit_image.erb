@@ -1,4 +1,7 @@
-<h1>Welcome, <%=@image.user.username %></h1>
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
 <form class="" action="/images/<%=@image.id.to_s%>" method="post">
 
   <label> Title:
