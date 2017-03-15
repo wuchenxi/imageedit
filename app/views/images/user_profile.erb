@@ -1,3 +1,12 @@
+<% if @session.key?(:id) then %>
+<h2>Welcome <%= User.find(@session[:id]).username %>!</h2> 
+<h3><a href="/images/new">Post new image</a> <a href="/logout">Logout</a></h3>
+<% else %>
+<h2>Please <a href="/signup">signup</a> or <a href="/login">login</a> to
+post.</h2>
+<% end %>
+
+
 <h2>Images of <%=@user.username %></h2>
 <ul>
 <% @user.images.each do |i| %>
