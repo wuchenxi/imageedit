@@ -51,7 +51,7 @@ class ImagesController < ApplicationController
 
   post '/images/:id' do
     image=current_user.images.find_by(id: params[:id].to_i)
-    image.update(params)
+    image.update(name: params[:name], src: params[:src])
     if !image.valid? then
       flash[:message] = "Incomplete input."
       redirect "/images/#{params[:id]}/edit"
