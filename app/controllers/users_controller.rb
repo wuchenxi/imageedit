@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   get '/signup' do
-    if session.key?(:id) then redirect "/images" end
+    if logged_in? then redirect "/images" end
     erb :"/users/create_user"
   end
   

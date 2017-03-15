@@ -4,27 +4,22 @@
 </header>
 <body>
 
+<h2><%= @image.name %> by <%= @image.user.username %></h2>
+
 <canvas id="myimage" width="600" height="600" style="border:1px solid black;">
 Your browser does not support the HTML5 canvas tag.</canvas>
 
 <script>
 var ctx=document.getElementById("myimage").getContext("2d");
-var imgdata=ctx.getImageData(0,0,600,600);
-
-function pt(x,y){
-  imgdata[(y*600+x)*4]=128;
-  imgdata[(y*600+x)*4+1]=128;
-  imgdata[(y*600+x)*4+2]=128;
-  imgdata[(y*600+x)*4+3]=255;
+function plot(x,y){
+ctx.fillRect(Math.floor(x)%600,Math.floor(y)%600,1,1);
 }
 
-for(var i=0;i<20;i++){
-pt(i*10,i*i);
-}
+<%= @image.src %>
 
-ctx.putImageData(imgdata,0,0);
 </script>
 
-
+<a href="/images">Back to all images.</a>
 </body>
 </html>
+

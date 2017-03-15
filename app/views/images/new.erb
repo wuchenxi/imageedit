@@ -1,5 +1,11 @@
 <h1>Welcome, <%=@user.username %></h1>
-<form class="" action="/tweets" method="post">
-  <input type="input" name="content" value="">
-  <input type="submit" name="submit" id="submit" value="Create new tweet">
+<form class="" action="/images" method="post">
+  <label> Title:
+  <input type="input" name="name" value="">
+  </label><br>
+  <label> Source code:
+  <textarea name="src">
+  </textarea>
+  </label><br>
+  <input type="submit" value="Create new image">
 </form>

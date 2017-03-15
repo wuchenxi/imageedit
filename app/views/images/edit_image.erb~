@@ -1,0 +1,15 @@
+<h1>Welcome, <%=@user.username %></h1>
+<form class="" action="/images/<%=@image.id.to_s%>" method="post">
+
+  <label> Title:
+  <input type="input" name="name" value="@image.name">
+  </label><br>
+  <label> Source code:
+  <input type="textarea" name="src" value="@image.src">
+  </label><br>
+  <input type="submit" value="Edit">
+</form>
+
+<form class="" action="/images/<%=@image.id.to_s%>/delete" method="post">
+  <input type="submit" value="Delete">
+</form>

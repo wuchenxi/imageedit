@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2) do
 
   create_table "images", force: :cascade do |t|
+    t.text    "name"
     t.text    "src"
     t.integer "user_id"
   end
