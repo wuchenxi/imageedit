@@ -8,7 +8,6 @@ class ImagesController < ApplicationController
   end
   
   get '/images' do
-    @session=session
     erb :"images/index"
   end
 
@@ -17,7 +16,6 @@ class ImagesController < ApplicationController
       flash[:message] = "Please login to continue."
       redirect "/login"
     end
-    @user=current_user
     erb :"images/new"
   end
 
@@ -32,8 +30,7 @@ class ImagesController < ApplicationController
   end
 
   get '/users/:id' do
-    @session=session
-    @user=User.find(params[:id].to_i)
+    @user=User.find_by(id: params[:id])
     erb :"images/user_profile"
   end
 
@@ -42,7 +39,7 @@ class ImagesController < ApplicationController
       flash[:message] = "Please login to continue."
       redirect '/login'
     end
-    @image=Image.find(params[:id].to_i)
+    @image=Image.find_by(id: params[:id])
     if @image.user!=current_user then
       flash[:message] = "Incorrect account."
       redirect '/images'
@@ -51,7 +48,7 @@ class ImagesController < ApplicationController
   end
 
   post '/images/:id' do
-    image=current_user.images.find_by(id: params[:id].to_i)
+    image=current_user.images.find_by(id: params[:id])
     image.update(name: params[:name], src: params[:src])
     if !image.valid? then
       flash[:message] = "Incomplete input."
@@ -62,13 +59,13 @@ class ImagesController < ApplicationController
   end
 
   post '/images/:id/delete' do
-    image=current_user.images.find_by(id: params[:id].to_i)
+    image=current_user.images.find_by(id: params[:id])
     image.destroy
     redirect '/images'
   end
       
   get '/images/:id/draw' do
-    @image=Image.find(params[:id].to_i)  
+    @image=Image.find_by(id: params[:id])  
     @own=false
     if logged_in? && @image.user==current_user then @own=true end
     erb :"/images/show_image"
