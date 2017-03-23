@@ -3,6 +3,7 @@ An App for posting images drawn with javascript
 # Installation
 
 bundle install --path vendor/bundle
+bundle exec rake db:migrate
 
 Start: 
 bundle exec rackup
@@ -20,7 +21,7 @@ defines a parabola.
 /images Show all images (title, source code and author)
 /users/id Show the profile page of a user
 
-A user may update their own image from their profile page.
+A logged-in user may update their own image from the image page.
 
 # Contributor's Guide
 
@@ -29,4 +30,4 @@ A user may update their own image from their profile page.
 /app/controllers/images_controller.rb: Image creation, editing, listing, display.
 /app/controllers/user_controller.rb: User account creation and login
 
-# license: BSD (https://opensource.org/licenses/BSD-2_Clause
+# license: BSD (https://opensource.org/licenses/BSD-2_Clause)
