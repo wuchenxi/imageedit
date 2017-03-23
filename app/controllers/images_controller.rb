@@ -34,13 +34,14 @@ class ImagesController < ApplicationController
   get '/users/:id' do
     @session=session
     @user=User.find(params[:id].to_i)
-    @own=false
-    if logged_in? && @user==current_user then @own=true end
     erb :"images/user_profile"
   end
 
   get '/images/:id/edit' do
-    if !logged_in? then redirect '/login' end
+    if !logged_in? then
+      flash[:message] = "Please login to continue."
+      redirect '/login'
+    end
     @image=Image.find(params[:id].to_i)
     if @image.user!=current_user then
       flash[:message] = "Incorrect account."
@@ -72,6 +73,9 @@ class ImagesController < ApplicationController
       
   get '/images/:id/draw' do
     @image=Image.find(params[:id].to_i)
+    
+    @own=false
+    if logged_in? && @image.user==current_user then @own=true end
     erb :"/images/show_image"
   end
     
