@@ -41,7 +41,7 @@ class UsersController < ApplicationController
       session[:id]=user.id
       redirect "/images"
     else
-      flash[:message] = "Incorrect username/password."
+      flash[:message] = "Incorrect username or password."
       redirect "/login"
     end
   end

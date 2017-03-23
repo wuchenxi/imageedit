@@ -12,9 +12,8 @@ post.</h2>
 
 <ul>
 <% Image.all.each do |i| %>
-  <li><p><%= i.name %></p>
+  <li><p><a href="/images/<%= i.id %>/draw"><%= i.name %></a></p>
   <p><%= i.src %></p>
-  <p><a href="/images/<%= i.id %>/draw">Draw Image</a></p>
   <p><a href="/users/<%= i.user.id %>"><%= i.user.username %></a></p>
   </li>
   

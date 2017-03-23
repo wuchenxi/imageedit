@@ -19,7 +19,13 @@ ctx.fillRect(Math.floor(x)%600,Math.floor(y)%600,1,1);
 
 </script>
 
-<a href="/images">Back to all images.</a>
+<p><%= @image.src %></p>
+
+<% if @own %>
+<p><a href="/images/<%= @image.id %>/edit">Change or delete</a></p>
+<% end %>
+
+<p><a href="/images">Back to all images.</a></p>
 </body>
 </html>
 

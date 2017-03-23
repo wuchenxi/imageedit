@@ -10,13 +10,9 @@ post.</h2>
 <h2>Images of <%=@user.username %></h2>
 <ul>
 <% @user.images.each do |i| %>
-  <li><p><%= i.name %></p>
+  <li><p><a href="/images/<%= i.id %>/draw"><%= i.name %></a></p>
   <p><%= i.src %></p>
-  <p><a href="/images/<%= i.id %>/draw">Draw Image</a></p>
   <p><a href="/user/<%= i.user.id %>"><%= i.user.username %></a></p>
-  <% if @own %>
-  <p><a href="/images/<%= i.id %>/edit">Clange or delete</a></p>
-  <% end %>
   </li>
 <% end %>
 </ul>
