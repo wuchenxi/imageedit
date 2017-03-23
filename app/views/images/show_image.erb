@@ -4,7 +4,7 @@
 </header>
 <body>
 
-<h2><%= @image.name %> by <%= @image.user.username %></h2>
+<h2><%= @image.name %> by <a href="/users/<%= @image.user.id %>"><%= @image.user.username %></a></h2>
 
 <canvas id="myimage" width="600" height="600" style="border:1px solid black;">
 Your browser does not support the HTML5 canvas tag.</canvas>
