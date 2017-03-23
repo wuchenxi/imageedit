@@ -3,6 +3,7 @@ require 'rack-flash'
 class UsersController < ApplicationController
 
   use Rack::Flash
+
   get '/signup' do
     if logged_in? then
       flash[:message] = "Already logged in."
@@ -28,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    if session[:id] then
+    if logged_in? then
       flash[:message] = "Already logged in."
       redirect "/images"
     end

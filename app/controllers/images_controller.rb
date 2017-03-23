@@ -63,17 +63,12 @@ class ImagesController < ApplicationController
 
   post '/images/:id/delete' do
     image=current_user.images.find_by(id: params[:id].to_i)
-    if image.user==current_user then
-      image.destroy
-    else
-      flash[:message] = "Incorrect account."
-    end
+    image.destroy
     redirect '/images'
   end
       
   get '/images/:id/draw' do
-    @image=Image.find(params[:id].to_i)
-    
+    @image=Image.find(params[:id].to_i)  
     @own=false
     if logged_in? && @image.user==current_user then @own=true end
     erb :"/images/show_image"
